@@ -1,0 +1,132 @@
+datasource postgres {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ClassModel {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+  newField  Boolean  @map("new")
+
+  @@map("Class")
+}
+
+model Admin {
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  birthdate DateTime?
+  firstName String?
+  lastName  String?
+  username  String    @unique
+  password  String
+  roles     Json
+  username  String    @unique
+  password  String
+  roles     Json
+}
+
+model Order {
+  id         String           @id @default(cuid())
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+  quantity   Int?
+  discount   Float?
+  totalPrice Int?
+  customer   Customer?        @relation(fields: [customerId], references: [id])
+  customerId String?
+  product    Product?         @relation(fields: [productId], references: [id])
+  productId  String?
+  status     EnumOrderStatus? @default(PENDING)
+}
+
+model Customer {
+  address      Address?                  @relation(fields: [addressId], references: [id])
+  addressId    String?
+  createdAt    DateTime                  @default(now())
+  email        String?
+  firstName    String?
+  id           String                    @id @default(cuid())
+  lastName     String?
+  phone        String?
+  updatedAt    DateTime                  @updatedAt
+  customerType EnumCustomerCustomerType? @default(INDIVIDUAL)
+  orders       Order[]
+  someThing    SomeThing?
+}
+
+model Address {
+  id        String     @id @default(cuid())
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  address1  String?    @map("address_1")
+  address2  String?    @map("address_2")
+  city      String?
+  state     String?
+  zip       Int?
+  customers Customer[]
+}
+
+model Product {
+  id          String                   @id @default(cuid())
+  createdAt   DateTime                 @default(now())
+  updatedAt   DateTime                 @updatedAt
+  name        String?
+  itemPrice   Float?
+  description String?
+  productType EnumProductProductType[]
+  orders      Order[]
+}
+
+model SomeThing {
+  createdAt  DateTime  @default(now())
+  customer   Customer? @relation(fields: [customerId], references: [id])
+  customerId String?   @unique
+  id         String    @id @default(cuid())
+  updatedAt  DateTime  @updatedAt
+}
+
+model DecisionAoiRank {
+  departmentId       Int      @map("department_id")
+  periodId           Int      @map("period_id")
+  interestId         Int      @map("interest_id")
+  decision           String
+  timestamp          DateTime @default(now())
+  luUsersUsertypesId Int      @map("lu_users_usertypes_id")
+  ranking            String?
+  id                 String   @id @default(cuid())
+
+  @@unique([department_id, period_id, interest_id, decision, timestamp])
+  @@map("decision_aoi_rank")
+}
+
+model Employee {
+  firstName String
+  lastName  String
+  birthdate DateTime
+  id        String   @id @default(cuid())
+
+  @@unique([firstName, lastName, birthdate])
+}
+
+enum EnumOrderStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+}
+
+enum EnumCustomerCustomerType {
+  INDIVIDUAL
+  COMPANY
+}
+
+enum EnumProductProductType {
+  ELECTRONICS
+  BOOKS
+  CLOTHING
+}
