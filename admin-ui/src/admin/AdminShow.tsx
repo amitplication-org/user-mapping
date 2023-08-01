@@ -20,8 +20,6 @@ export const AdminShow = (props: ShowProps): React.ReactElement => {
         <TextField label="Username" source="username" />
         <TextField label="Password" source="password" />
         <TextField label="Roles" source="roles" />
-        <TextField label="Username" source="username" />
-        <TextField label="Roles" source="roles" />
       </SimpleShowLayout>
     </Show>
   );

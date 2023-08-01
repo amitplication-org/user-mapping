@@ -21,8 +21,6 @@ export const AdminList = (props: ListProps): React.ReactElement => {
         <TextField label="Username" source="username" />
         <TextField label="Password" source="password" />
         <TextField label="Roles" source="roles" />
-        <TextField label="Username" source="username" />
-        <TextField label="Roles" source="roles" />
       </Datagrid>
     </List>
   );

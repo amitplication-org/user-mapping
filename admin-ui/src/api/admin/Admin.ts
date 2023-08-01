@@ -10,6 +10,4 @@ export type Admin = {
   username: string;
   password: string;
   roles: JsonValue;
-  username: string;
-  roles: JsonValue;
 };
