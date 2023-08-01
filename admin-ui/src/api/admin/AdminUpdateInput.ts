@@ -7,7 +7,4 @@ export type AdminUpdateInput = {
   username?: string;
   password?: string;
   roles?: InputJsonValue;
-  username?: string;
-  password?: string;
-  roles?: InputJsonValue;
 };

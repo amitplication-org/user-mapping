@@ -98,21 +98,6 @@ class Admin {
   @IsJSONValue()
   @Field(() => GraphQLJSON)
   roles!: JsonValue;
-
-  @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  username!: string;
-
-  @ApiProperty({
-    required: true,
-  })
-  @IsJSONValue()
-  @Field(() => GraphQLJSON)
-  roles!: JsonValue;
 }
 
 export { Admin as Admin };

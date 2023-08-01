@@ -11,14 +11,9 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { PrismaService } from "../../prisma/prisma.service";
 import { Prisma, Admin } from "@prisma/client";
-import { PasswordService } from "../../auth/password.service";
-import { transformStringFieldUpdateInput } from "../../prisma.util";
 
 export class AdminServiceBase {
-  constructor(
-    protected readonly prisma: PrismaService,
-    protected readonly passwordService: PasswordService
-  ) {}
+  constructor(protected readonly prisma: PrismaService) {}
 
   async count<T extends Prisma.AdminCountArgs>(
     args: Prisma.SelectSubset<T, Prisma.AdminCountArgs>
@@ -39,32 +34,12 @@ export class AdminServiceBase {
   async create<T extends Prisma.AdminCreateArgs>(
     args: Prisma.SelectSubset<T, Prisma.AdminCreateArgs>
   ): Promise<Admin> {
-    return this.prisma.admin.create<T>({
-      ...args,
-
-      data: {
-        ...args.data,
-        password: await this.passwordService.hash(args.data.password),
-      },
-    });
+    return this.prisma.admin.create<T>(args);
   }
   async update<T extends Prisma.AdminUpdateArgs>(
     args: Prisma.SelectSubset<T, Prisma.AdminUpdateArgs>
   ): Promise<Admin> {
-    return this.prisma.admin.update<T>({
-      ...args,
-
-      data: {
-        ...args.data,
-
-        password:
-          args.data.password &&
-          (await transformStringFieldUpdateInput(
-            args.data.password,
-            (password) => this.passwordService.hash(password)
-          )),
-      },
-    });
+    return this.prisma.admin.update<T>(args);
   }
   async delete<T extends Prisma.AdminDeleteArgs>(
     args: Prisma.SelectSubset<T, Prisma.AdminDeleteArgs>

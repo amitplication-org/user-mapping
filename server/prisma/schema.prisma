@@ -26,9 +26,6 @@ model Admin {
   username  String    @unique
   password  String
   roles     Json
-  username  String    @unique
-  password  String
-  roles     Json
 }
 
 model Order {

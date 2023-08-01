@@ -27,8 +27,6 @@ const CREATE_INPUT = {
   lastName: "exampleLastName",
   username: "exampleUsername",
   password: "examplePassword",
-  username: "exampleUsername",
-  password: "examplePassword",
 };
 const CREATE_RESULT = {
   id: "exampleId",
@@ -37,8 +35,6 @@ const CREATE_RESULT = {
   birthdate: new Date(),
   firstName: "exampleFirstName",
   lastName: "exampleLastName",
-  username: "exampleUsername",
-  password: "examplePassword",
   username: "exampleUsername",
   password: "examplePassword",
 };
@@ -52,8 +48,6 @@ const FIND_MANY_RESULT = [
     lastName: "exampleLastName",
     username: "exampleUsername",
     password: "examplePassword",
-    username: "exampleUsername",
-    password: "examplePassword",
   },
 ];
 const FIND_ONE_RESULT = {
@@ -63,8 +57,6 @@ const FIND_ONE_RESULT = {
   birthdate: new Date(),
   firstName: "exampleFirstName",
   lastName: "exampleLastName",
-  username: "exampleUsername",
-  password: "examplePassword",
   username: "exampleUsername",
   password: "examplePassword",
 };

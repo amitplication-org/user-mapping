@@ -10,7 +10,4 @@ export type AdminOrderByInput = {
   username?: SortOrder;
   password?: SortOrder;
   roles?: SortOrder;
-  username?: SortOrder;
-  password?: SortOrder;
-  roles?: SortOrder;
 };

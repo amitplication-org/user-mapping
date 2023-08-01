@@ -7,7 +7,4 @@ export type AdminCreateInput = {
   username: string;
   password: string;
   roles: InputJsonValue;
-  username: string;
-  password: string;
-  roles: InputJsonValue;
 };

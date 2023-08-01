@@ -59,8 +59,6 @@ export class AdminControllerBase {
         username: true,
         password: true,
         roles: true,
-        username: true,
-        roles: true,
       },
     });
   }
@@ -90,8 +88,6 @@ export class AdminControllerBase {
         lastName: true,
         username: true,
         password: true,
-        roles: true,
-        username: true,
         roles: true,
       },
     });
@@ -123,8 +119,6 @@ export class AdminControllerBase {
         lastName: true,
         username: true,
         password: true,
-        roles: true,
-        username: true,
         roles: true,
       },
     });
@@ -166,8 +160,6 @@ export class AdminControllerBase {
           username: true,
           password: true,
           roles: true,
-          username: true,
-          roles: true,
         },
       });
     } catch (error) {
@@ -206,8 +198,6 @@ export class AdminControllerBase {
           lastName: true,
           username: true,
           password: true,
-          roles: true,
-          username: true,
           roles: true,
         },
       });
